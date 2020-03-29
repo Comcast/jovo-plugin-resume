@@ -1,5 +1,7 @@
 ## Jovo Resumer Plugin
 
+echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zsh_profile
+
 >NB: this project is a WIP. We are actively working towards rolling up, testing, and providing examples!
 
 This plugin makes it simple to integrate conversational memory into a Jovo app. It provides an easy to use API
@@ -7,14 +9,14 @@ that manages the data required to pause, resume, and switch between multi-step l
 
 ## API
 
-The plugin adds a new object to the Jovo object, Resumer. 
+The plugin adds a new object to the Jovo object, Resumer.
 It can be accessed in your handler function with
 `this.$resumer`
 This object is automatically serialized and deserialized into the jovo user data object with each request, and has the following exposed methods:
 
 ### switchTo(conversationName: string, startIntent: string)
 
-switchTo acts like an intelligent toStateIntent. 
+switchTo acts like an intelligent toStateIntent.
 For example:
 
 ```
@@ -39,11 +41,11 @@ FooConversation: {
     ...
 }
 ```
-When FooConversation is first started, the switchTo is functionally identical to 
+When FooConversation is first started, the switchTo is functionally identical to
 `toStateIntent("FooConversation", "FooIntent")`
 If the user starts FooConversation, then answers yes to the intial question, they are in the YesNoState, part of
-FooConversation. Now if the user closes out of the app, and hits the startFooHandler again, switchTo will not bring them 
-to the FooIntent handler, but will bring them to the YesIntent handler that they left off in. All requests 
+FooConversation. Now if the user closes out of the app, and hits the startFooHandler again, switchTo will not bring them
+to the FooIntent handler, but will bring them to the YesIntent handler that they left off in. All requests
 (accross any session) are now automatically saved as a marker for the current conversation.
 This can be controlled with the following methods:
 
@@ -64,20 +66,20 @@ the field actionData will either be set or not set. So when a resume happens $re
 with the following fields:
 
 ```
-comingFrom: ConversationStatus,  
+comingFrom: ConversationStatus,
 resumingInto: ConversationStatus
 ```
 
 where ConversationStatus is an object with the following fields:
 
 ```
-name: string, // the conversation name, empty string if not in a conversation 
-// Important information about the last request in this conversation 
-intent: string, 
-state: string, 
-timestamp: string, 
+name: string, // the conversation name, empty string if not in a conversation
+// Important information about the last request in this conversation
+intent: string,
+state: string,
+timestamp: string,
 slots: Object
-``` 
+```
 
 So to write a handler function that can gracefully be resumed into:
 ```
@@ -146,7 +148,7 @@ app.setHandler({
                 this.$resumer.pauseCurrent();
                 this.removeState().ask("That's ok, we can try again later!");
             }
-            
+
         }
     }
 
