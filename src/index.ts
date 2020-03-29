@@ -7,6 +7,10 @@ declare module 'jovo-core/dist/src/Interfaces' {
 }
 
 declare module 'jovo-core/dist/src/' {
-    export interface Jovo { $resumer: JovoResumer }
-    export interface User { $data: { [key: string]: any } }
+    export interface Jovo {
+        $resumer: JovoResumer;
+    }
+    export interface User {
+        $data: { [key: string]: any }; // eslint-disable-line
+    }
 }

@@ -9,5 +9,6 @@ builld
 .vscode
 .code
 .env
+report
 
 example/node_modules

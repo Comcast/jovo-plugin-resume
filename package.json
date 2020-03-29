@@ -2,8 +2,27 @@
   "name": "jovo-plugin-resume",
   "version": "0.1.0",
   "description": "A plugin that makes continuing conversations across sessions easy",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "contributors": [
+    "Jeffrey Smith <jsmith6690@gmail.com> (http://jeffreysmith.ninja)",
+    "Zach Morgan <zmorg98@gmail.com>"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prettier": "prettier --config ./.prettierrc.js --write \"{test,src}/**/*\" --list-different --ignore example",
+    "rimraf": "rimraf ./dist",
+    "typedoc": "typedoc --out ./docs ./ --mode file",
+    "build": "tsc",
+    "watch": "npm run tscw",
+    "test": "jest",
+    "tscw": "tsc --watch",
+    "lint": "run-s lint.*",
+    "lint.js": "eslint './src/**/*.{js,ts}'"
+  },
   "dependencies": {
     "jovo-core": "^3.0.9",
     "jovo-db-filedb": "^3.0.9",
@@ -22,38 +41,28 @@
     "@types/lodash.set": "^4.3.6",
     "@types/node": "^13.1.6",
     "@types/socket.io-client": "^1.4.32",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-detailed-reporter": "^0.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "gulp": "^4.0.0",
     "gulp-install": "^1.1.0",
     "gulp-run-command": "0.0.9",
     "gulp-zip": "^4.2.0",
-    "husky": "^4.0.6",
+    "husky": "^4.2.3",
     "jest": "^23.6.0",
     "lint-staged": "^9.5.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "rollup": "^1.29.0",
     "source-map-support": "^0.5.16",
     "ts-jest": "^23.10.4",
-    "tslint": "^5.20.1",
-    "tslint-config-prettier": "^1.18.0",
     "typedoc": "^0.17.3",
     "typescript": "^3.7.4"
   },
-  "scripts": {
-    "prettier": "prettier --config ./.prettierrc.js --write \"{test,src}/**/*\" --list-different",
-    "tslint": "tslint -p tsconfig.json -c tslint.json",
-    "tsc": "tsc",
-    "rimraf": "rimraf ./dist",
-    "typedoc": "typedoc --out ./docs ./ --mode file",
-    "build": "npm run tsc",
-    "watch": "npm run tscw",
-    "test": "jest",
-    "tscw": "tsc --watch"
-  },
   "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
     "testURL": "http://localhost/",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "testPathIgnorePatterns": [
@@ -73,9 +82,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged",
-      "post-merge": "npm i"
+      "pre-commit": "tsc --noEmit && lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
   },
   "repository": {
     "type": "git",
