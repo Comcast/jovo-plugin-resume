@@ -7,10 +7,6 @@ export interface JovoResumerConfig extends PluginConfig {
     resumeDataKey: string;
 }
 
-export interface Java {
-    foo: string;
-}
-
 export interface ConversationStatus {
     name: string;
     state: string;
