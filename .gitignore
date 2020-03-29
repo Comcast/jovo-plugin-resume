@@ -9,3 +9,5 @@ builld
 .vscode
 .code
 .env
+
+example/node_modules
