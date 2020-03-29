@@ -1,0 +1,11 @@
+dist/
+node_modules/
+db/
+bundle/
+bundle.zip
+.env
+builld
+.editorconfig
+.vscode
+.code
+.env
