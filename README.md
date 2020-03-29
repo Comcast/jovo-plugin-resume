@@ -5,6 +5,11 @@
 This plugin makes it simple to integrate conversational memory into a Jovo app. It provides an easy to use API
 that manages the data required to pause, resume, and switch between multi-step linear or non-linear conversations.
 
+
+## Install
+
+>`npm i jovo-plugin-resume --save`
+
 ## API
 
 The plugin adds a new object to the Jovo object, Resumer.
