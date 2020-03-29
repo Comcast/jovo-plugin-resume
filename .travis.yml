@@ -4,7 +4,6 @@ node_js:
 - '10'
 install:
 - npm install
-
 jobs:
   include:
   - stage: lint
@@ -24,20 +23,19 @@ jobs:
       on:
         repo: Comcast/jovo-plugin-resume
         tags: true
-  - stage : github release
-      if: tag IS present
-      script: npm run build
-      deploy:
-        provider: releases
-        api_key:
-          secure: J9O5bkU5uWqrLO2ZYLBhazt9PnY5Ngbaz7VYR6AY1YsMMf0EysKN+81Xqs380bA488qGDD/DZSP9kUtge2LFXhwjOBEAQB1eBjxrbudCG2higj2PtQ5uV6x9Fs7Su15Xv04MdScpFSQRVuAECP+Q8m0S34EB4Gg6XNHLgJz2hmnJc/9Mj9svpD7AqdfN5afLXf9o56tHV48RV5anrYo8bjwWP9msbTAh1EexNLAiYy8IAtMqwFDMVAKYoYnVlwHJLTpRfaaETE+WNoi560H6xrx+ihgnzFXZiaZ4vbh7KDAbDxSRwU6+xv2wEQ2iRoeHrOi6B6J5m65bDPy7duQ3DbMqD4yO7XoC/ndAk0cZT+Rwlqibt2pWsKNKev4gZ7vfxa/gf5Q3slY6furAgXwZBlsLpQswh5WjplfZDusOJzfcPPfZ0CeooOtaCx0LDN3dN4koPEkHRqoFhNEM53pD1G/LUxs+jndKlqChxunxKfEds1djQNEyQ5j4MkoQ666V3tPDshdbCOHo5IBPyybv0tm7aL6tM2HAm0+LMdl1nnw/QRvLY/3nOuTO3g3nxO9LpyYV2vCJWuZhWdaNQY5Krf46bUQhgbyU5haLLVGvmwcVipk3rGCkq1nUS9n6yPT4c4j/82lG49PQHRJ+M4of/x5DJLGC6wCKeJ+5pGgOveU=
-        file_glob: true,
-        file: "./*"
-        skip_cleanup: true
-        on:
-          repo: Comcast/jovo-plugin-resume
-          tags: true
-
+  - stage: github release
+    if: tag IS present
+    script: npm run build
+    deploy:
+      provider: releases
+      api_key:
+        secure: J9O5bkU5uWqrLO2ZYLBhazt9PnY5Ngbaz7VYR6AY1YsMMf0EysKN+81Xqs380bA488qGDD/DZSP9kUtge2LFXhwjOBEAQB1eBjxrbudCG2higj2PtQ5uV6x9Fs7Su15Xv04MdScpFSQRVuAECP+Q8m0S34EB4Gg6XNHLgJz2hmnJc/9Mj9svpD7AqdfN5afLXf9o56tHV48RV5anrYo8bjwWP9msbTAh1EexNLAiYy8IAtMqwFDMVAKYoYnVlwHJLTpRfaaETE+WNoi560H6xrx+ihgnzFXZiaZ4vbh7KDAbDxSRwU6+xv2wEQ2iRoeHrOi6B6J5m65bDPy7duQ3DbMqD4yO7XoC/ndAk0cZT+Rwlqibt2pWsKNKev4gZ7vfxa/gf5Q3slY6furAgXwZBlsLpQswh5WjplfZDusOJzfcPPfZ0CeooOtaCx0LDN3dN4koPEkHRqoFhNEM53pD1G/LUxs+jndKlqChxunxKfEds1djQNEyQ5j4MkoQ666V3tPDshdbCOHo5IBPyybv0tm7aL6tM2HAm0+LMdl1nnw/QRvLY/3nOuTO3g3nxO9LpyYV2vCJWuZhWdaNQY5Krf46bUQhgbyU5haLLVGvmwcVipk3rGCkq1nUS9n6yPT4c4j/82lG49PQHRJ+M4of/x5DJLGC6wCKeJ+5pGgOveU=
+      file_glob: true
+      file: "./*"
+      skip_cleanup: true
+      on:
+        repo: Comcast/jovo-plugin-resume
+        tags: true
 notifications:
   email:
     recipients:
