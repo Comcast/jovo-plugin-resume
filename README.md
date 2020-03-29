@@ -1,7 +1,5 @@
 ## Jovo Resumer Plugin
 
-echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zsh_profile
-
 >NB: this project is a WIP. We are actively working towards rolling up, testing, and providing examples!
 
 This plugin makes it simple to integrate conversational memory into a Jovo app. It provides an easy to use API
