@@ -1,4 +1,5 @@
 ## Jovo Resumer Plugin
+[![Build Status](https://travis-ci.org/Comcast/jovo-plugin-resume.svg?branch=master)](https://travis-ci.org/Comcast/jovo-plugin-resume)
 
 >NB: this project is a WIP. We are actively working towards rolling up, testing, and providing examples!
 
